@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import Board from './Board'
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { counter: 0 };
   }
-
+/*
   componentDidMount() {
     this.interval = setInterval(
       this.increment.bind(this),
@@ -22,14 +23,16 @@ export default class App extends Component {
   componentWillUnmount() {
     clearInterval(this.interval)
   }
-
+*/
   render() {
     const { counter } = this.state;
-
+    const cells = [ [4,5,6], [1,2,3]];
     return (
       <header>
         <div>Webpack is doing its thing with React and ES2015</div>
-        <div>{counter}</div>
+        <div>
+            <Board boardCells={cells}/>
+        </div>
       </header>
     );
   }
