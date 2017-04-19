@@ -1,0 +1,11 @@
+.cell{
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: rgb(235, 237, 240);
+  margin: 1px;
+  border: 1px solid #000;
+}
+.alive{
+  background: rgb(123, 201, 111);
+}

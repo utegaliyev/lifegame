@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import Row from './Row';
+import Row from './Row/Row';
 
 const Board = ({boardCells}) => {
 
