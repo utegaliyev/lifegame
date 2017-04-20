@@ -1,6 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Cell from '../Cell/Cell';
 import './style.css';
+import PropTypes from 'prop-types';
 
 const Row = ({cells}) => {
 

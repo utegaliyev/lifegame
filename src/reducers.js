@@ -1,4 +1,5 @@
-import {INIT_CELLS, ITERATE_CELLS, START_ITERATE, STOP_ITERATE, SET_INTERVAL_ID} from './actions';
+import {INIT_CELLS, ITERATE_CELLS, START_ITERATE, STOP_ITERATE,
+    SET_INTERVAL_ID, CLEAR_BOARD} from './actions';
 
 function getNextCells(cells){
   const result = [];
@@ -39,13 +40,46 @@ function getNextCells(cells){
   }
   return result;
 }
+function getCleanBoard(row, col){
+      const result = [];
+      for(var i=0; i<row; i++){
+        result.push([]);
+        for(var j=0; j<col; j++){
+          result[i].push({alive: false});
+        }
+      }
+    return result;
+}
+function getCells(row, col){
+    const result = [];
+    for(var i=0; i<row; i++){
+      result.push([]);
+      for(var j=0; j<col; j++){
+        result[i].push(getRandomCell());
+      }
+    }
+    return result;
+}
+
+function getRandomCell(){
+    const rand = parseInt( Math.random() * 5 + 1);
+    //debugger;
+    if(rand==1){
+      return {alive: true};
+    }else{
+      return {alive: false};
+    }
+}
+
+
 
 const cells = (state = {boardCells: [],
-                        counter: 0,
-                        start: false}, action) => {
+                        counter: 0, start: false,
+                        row: 20, col: 20}, action) => {
+
     switch (action.type) {
       case INIT_CELLS:
-        return Object.assign({}, state, {boardCells: action.boardCells,   counter: 0});
+        return Object.assign({}, state, {boardCells: getCells(state.row, state.col),   counter: 0});
       case ITERATE_CELLS:
         return Object.assign({}, state, {boardCells: getNextCells(state.boardCells),   counter: state.counter+1});
       case START_ITERATE:
@@ -54,6 +88,8 @@ const cells = (state = {boardCells: [],
         return  Object.assign({}, state, {start: false});
       case SET_INTERVAL_ID:
         return Object.assign({}, state, {intervalId: action.intervalId});
+      case CLEAR_BOARD:
+          return Object.assign({}, state, {boardCells: getCleanBoard(state.row, state.col)});
       default:
         return state;
     }

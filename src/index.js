@@ -7,7 +7,7 @@ import {initCells} from './actions';
 
 const containerEl = document.getElementById("container");
 let store = configureStore();
-store.dispatch(initCells(20, 20));
+store.dispatch(initCells());
 
 render(<Provider store={store}>
    <App />

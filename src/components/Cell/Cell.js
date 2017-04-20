@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import './style.css';
+import PropTypes from 'prop-types';
 
 const Cell = ({cell}) => {
   let classList = ['cell'];
