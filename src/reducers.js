@@ -1,5 +1,5 @@
 import {INIT_CELLS, ITERATE_CELLS, START_ITERATE, STOP_ITERATE,
-    SET_INTERVAL_ID, CLEAR_BOARD} from './actions';
+    SET_INTERVAL_ID, CLEAR_BOARD, CELL_CLICK} from './actions';
 
 function getNextCells(cells){
   const result = [];
@@ -70,8 +70,20 @@ function getRandomCell(){
       return {alive: false};
     }
 }
-
-
+function getClickedBoard(cells, row, col){
+    const result = [];
+    for(var i=0; i<cells.length; i++){
+      result.push([]);
+      for(var j=0; j<cells[i].length; j++){
+        if(i === row && j=== col){
+          result[i].push({alive: !cells[i][j].alive});
+        }else{
+          result[i].push(cells[i][j]);
+        }
+      }
+    }
+    return result;
+}
 
 const cells = (state = {boardCells: [],
                         counter: 0, start: false,
@@ -90,6 +102,8 @@ const cells = (state = {boardCells: [],
         return Object.assign({}, state, {intervalId: action.intervalId});
       case CLEAR_BOARD:
           return Object.assign({}, state, {boardCells: getCleanBoard(state.row, state.col)});
+      case CELL_CLICK:
+          return Object.assign({}, state, {boardCells: getClickedBoard(state.boardCells, action.row, action.col)});
       default:
         return state;
     }

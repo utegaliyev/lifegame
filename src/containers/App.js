@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Board from '../components/Board';
+import Board from '../components/Board/Board';
 import {initCells, iterate, startIterate, stopIterate, setIntervalId, clearBoard} from '../actions';
 import { connect } from 'react-redux'
 import {ButtonGroup, Button, Panel, Col} from 'react-bootstrap';

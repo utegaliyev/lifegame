@@ -4,6 +4,8 @@ export const START_ITERATE = 'START_ITERATE'
 export const STOP_ITERATE = 'STOP_ITERATE'
 export const SET_INTERVAL_ID = 'SET_INTERVAL_ID'
 export const CLEAR_BOARD = 'CLEAR_BOARD'
+export const CELL_CLICK = 'CELL_CLICK'
+
 
 export function initCells() {
     return {type: INIT_CELLS}
@@ -24,4 +26,7 @@ export function setIntervalId(intervalId){
 }
 export function clearBoard(){
   return {type: CLEAR_BOARD}
+}
+export function cellClick(row, col){
+  return {type: CELL_CLICK, row, col};
 }
